@@ -59,9 +59,8 @@ func in_array(e int, s []int) bool {
 }
 // find max number for int array
 func maxIntSlice(s []int) (max int) {
-
+	
 	max =0;
-
 	for _, item := range s {
 		if max < item {
 			max = item;
@@ -69,4 +68,3 @@ func maxIntSlice(s []int) (max int) {
 	}
 	return;
 }
-
