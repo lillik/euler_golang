@@ -6,7 +6,7 @@ import (
 )
 
 func main()  {
-	fmt.Println("Problem 4");
+	fmt.Println("Problem 5");
 	t0 := time.Now()
 	var number int = 0;
 	var found bool = true;
