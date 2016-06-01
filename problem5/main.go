@@ -8,7 +8,6 @@ import (
 func main()  {
 	fmt.Println("Problem 4");
 	t0 := time.Now()
-	//
 	var number int = 0;
 	var found bool = true;
 	for i:=2520; ; i += 20 {
