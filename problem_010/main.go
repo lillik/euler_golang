@@ -9,25 +9,29 @@ func main() {
 	fmt.Println("Problem 10");
 	t0 := time.Now()
 
-	sum := 0;
-	pp :=1;
-	for pp < 2000000{
-		pp +=1;
-		if pp == 2 || pp == 3 || pp == 5 || pp == 7 {
-			sum +=pp;
-		} else if (pp % 2 != 0) && (pp % 3 != 0) && (pp % 5 != 0) && (pp % 7 != 0) {
-			if prime(uint32(pp)) {
-				sum +=pp;
-
-			}
-		}
-	}
-
+	sum := sumPrimeNumber(2000000);
 	fmt.Println("The result is:", sum);
 	t1 := time.Now()
 	fmt.Printf("The call took %v to run.\n", t1.Sub(t0))
 }
 
+func sumPrimeNumber(limit int) int {
+	sum := 0;
+	pp := 1;
+	for pp < limit {
+		pp += 1;
+		if pp == 2 || pp == 3 || pp == 5 || pp == 7 {
+			sum += pp;
+		} else if (pp % 2 != 0) && (pp % 3 != 0) && (pp % 5 != 0) && (pp % 7 != 0) {
+			if prime(uint32(pp)) {
+				sum += pp;
+
+			}
+		}
+	}
+
+	return sum
+}
 
 //Using algorithm Miller–Rabin primality test.
 //https://en.wikipedia.org/wiki/Miller–Rabin_primality_test
@@ -43,7 +47,7 @@ func prime(n uint32) bool {
 	nm1 := n - 1
 	d := nm1
 	s := 0
-	for d&1 == 0 {
+	for d & 1 == 0 {
 		d >>= 1
 		s++
 	}
@@ -53,7 +57,7 @@ func prime(n uint32) bool {
 		x := uint64(1)
 		p := uint64(a)
 		for dr := d; dr > 0; dr >>= 1 {
-			if dr&1 != 0 {
+			if dr & 1 != 0 {
 				x = x * p % n64
 			}
 			p = p * p % n64
